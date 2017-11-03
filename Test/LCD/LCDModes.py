@@ -1,5 +1,6 @@
 """This is the diffirent messages for different senarios for the LCD screen"""
 
+import time
 import Adafruit_CharLCD as LCD
 
 
@@ -31,3 +32,12 @@ def display_balance(balance):
     "Display current balance after purchase."
     LCD.clear()
     LCD.message(balance)
+
+standard_mode
+time.sleep(3)
+payment_mode
+time.sleep(3)
+payment_insufficient
+time.sleep(3)
+display_balance(400)
+time.sleep(3)
