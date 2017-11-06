@@ -20,24 +20,32 @@ def standard_mode():
 def payment_mode():
     "This is the state of the LCD screen when payment is being processed."
     LCD.clear()
-    LCD.message("Payment is/nBeing processed")
+    LCD.message("Payment is/n")
+    LCD.message("Being processed")
 
 
 def payment_insufficient():
     "This state is when the payment unable to go through."
     LCD.clear()
-    LCD.message("Card not approved")
+    LCD.message("Card\n")
+    LCD.message("not approved")
 
 def display_balance(balance):
     "Display current balance after purchase."
     LCD.clear()
+    LCD.message("Card balance is:/n")
     LCD.message(balance)
 
-standard_mode
-time.sleep(3)
-payment_mode
-time.sleep(3)
-payment_insufficient
-time.sleep(3)
-display_balance(400)
-time.sleep(3)
+def main():
+    "Main function to test the different modes of the LCD Screen."
+    standard_mode()
+    time.sleep(3)
+    payment_mode()
+    time.sleep(3)
+    payment_insufficient()
+    time.sleep(3)
+    display_balance(400)
+    time.sleep(3)
+
+if __name__ == "__main__":
+    main()
