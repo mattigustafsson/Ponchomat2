@@ -61,6 +61,7 @@ while continue_reading:
 
             print "Sector 8 looked like this:"
             # Read block 8
+            bajs = MIFAREReader.Read_MFRC522(8).data
             MIFAREReader.MFRC522_Read(8)
             print "\n"
 
