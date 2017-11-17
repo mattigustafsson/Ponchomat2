@@ -1,3 +1,5 @@
+"""Device registers"""
+
 VL6180_FAILURE_RESET                        = -1
 
 VL6180_IDENTIFICATION_MODEL_ID              = 0x0000
