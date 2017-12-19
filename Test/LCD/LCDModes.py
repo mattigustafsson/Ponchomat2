@@ -42,29 +42,30 @@ def display_balance(balance):
     LCD.message("Card balance is:\n")
     LCD.message(balance)
 
-def main():
-    "Main function to test the different modes of the LCD Screen."
-    standard_mode()
-    time.sleep(3)
-    payment_mode()
-    time.sleep(3)
-    payment_insufficient()
-    time.sleep(3)
-    display_balance("400")
-    time.sleep(3)
-
-    while True:
-        if LCD.is_pressed(SELECT):
-            standard_mode()
-        elif LCD.is_pressed(RIGHT):
-            payment_mode()
-        elif LCD.is_pressed(DOWN):
-            payment_insufficient()
-        elif LCD.is_pressed(UP):
-            display_balance("4564")
-        elif LCD.is_pressed(LEFT):
-            LCD.clear()
-            LCD.message("Adrian is\na bajsTolle")
-
-if __name__ == "__main__":
-    main()
+##def main():
+##    "Main function to test the different modes of the LCD Screen."
+##    standard_mode()
+##    time.sleep(3)
+##    payment_mode()
+##    time.sleep(3)
+##    payment_insufficient()
+##    time.sleep(3)
+##    display_balance("400")
+##    time.sleep(3)
+##
+##    while True:
+##        time.sleep(0.2)
+##        if LCD.is_pressed(SELECT):
+##            standard_mode()
+##        elif LCD.is_pressed(RIGHT):
+##            payment_mode()
+##        elif LCD.is_pressed(DOWN):
+##            payment_insufficient()
+##        elif LCD.is_pressed(UP):
+##            display_balance("4564")
+##        elif LCD.is_pressed(LEFT):
+##            LCD.clear()
+##            LCD.message("Adrian is\na bajsTolle")
+##
+##if __name__ == "__main__":
+##    main()

@@ -1,7 +1,0 @@
-import RPi.GPIO as GPIO
-
-PIN11 = 11
-
-GPIO.setmode(GPIO.BOARD)
-GPIO.setup(PIN11,GPIO.IN)
-
