@@ -39,6 +39,8 @@ MCP23008_OLATA  = 0x0A
 class Adafruit_MCP230XX(object):
     OUTPUT = 0
     INPUT = 1
+    LOW = 0
+    HIGH = 1
 
     def __init__(self, address, num_gpios, busnum=1):
         assert num_gpios >= 0 and num_gpios <= 16, "Number of GPIOs must be between 0 and 16"
