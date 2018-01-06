@@ -17,6 +17,8 @@ def Rotate_Enginge():
     mcp.output(2, mcp.LOW)
     mcp.output(1, mcp.HIGH)
     time.sleep(0.15)
+    mcp.output(1, mcp.LOW)
+    mcp.output(0, mcp.LOW)
 
 
 def main():

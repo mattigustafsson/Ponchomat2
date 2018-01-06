@@ -1,10 +1,7 @@
 """This is the diffirent messages for different senarios for the LCD screen"""
 
 import time
-import Adafruit_CharLCD as LCD
-import RPi.GPIO as GPIO
-from MCP23017 import Adafruit_MCP230XX
-
+from Adafruit_CharLCD import Adafruit_CharLCDPlate as lcd
 
 # Char LCD plate button names.
 SELECT = 0
@@ -13,8 +10,10 @@ DOWN = 2
 UP = 3
 LEFT = 4
 
+LCD = lcd(address=0x21)
 
-LCD = LCD.Adafruit_CharLCDPlate(address=0x21)
+global FLASH
+FLASH = 0
 
 
 def standard_mode():
@@ -22,45 +21,56 @@ def standard_mode():
     It displays the price and Status of the machine."""
 
     LCD.clear()
-    LCD.message("Pris:20kr\n")
+    LCD.message("Pris:10kr\n")
     LCD.message("Klar")
 
 
 def payment_mode():
-    "This is the state of the LCD screen when payment is being processed."
+    """This is the state of the LCD screen when payment is being processed."""
     LCD.clear()
     LCD.message("Payment is\n")
     LCD.message("Being processed")
 
 
 def payment_insufficient():
-    "This state is when the payment unable to go through."
+    """This state is when the payment unable to go through."""
     LCD.clear()
-    LCD.message("Card has less\n")
-    LCD.message("than 20 moneys")
+    LCD.message("Card\n")
+    LCD.message("not approved")
+
 
 def display_balance(balance):
-    "Display current balance after purchase."
+    """Display current balance after purchase."""
     LCD.clear()
     LCD.message("Card balance is:\n")
     LCD.message(balance)
-    
-def display_emptyInventory():
-    "Display current balance after purchase."
-    LCD.clear()
-    LCD.message("Inventory\nis empty")
 
-def write_text(snack):
-    "Display current balance after purchase."
+
+def tiltSensorActivated():
+    """
+   
+    """
     LCD.clear()
-    LCD.message(snack)
-    
+    LCD.message("Machine is\nDeactivated")
+
+
+def flashLCD():
+    global FLASH
+    if FLASH == 0:
+        LCD.set_backlight(FLASH)
+        FLASH = 1
+    else:
+        LCD.set_backlight(FLASH)
+        FLASH = 0
+
+
 def scanButtons():
     if LCD.is_pressed(SELECT):
         return SELECT
     elif LCD.is_pressed(RIGHT):
         return RIGHT
-    
+
+
 def main():
     "Main function to test the different modes of the LCD Screen."
     standard_mode()
@@ -71,9 +81,14 @@ def main():
     time.sleep(1)
     display_balance("400")
     time.sleep(1)
+    tiltSensorActivated()
 
     while True:
+        print scanButtons()
         time.sleep(0.05)
+
+    while True:
+        time.sleep(0.2)
         if LCD.is_pressed(SELECT):
             standard_mode()
         elif LCD.is_pressed(RIGHT):
@@ -85,6 +100,7 @@ def main():
         elif LCD.is_pressed(LEFT):
             LCD.clear()
             LCD.message("Test")
+
 
 if __name__ == "__main__":
     main()

@@ -15,6 +15,7 @@ time.sleep(1)
 mcp.output(2, mcp.LOW)
 mcp.output(1, mcp.HIGH)
 time.sleep(0.15)
+mcp.
 ''' import smbus
 import time
 

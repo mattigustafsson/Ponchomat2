@@ -1,21 +1,4 @@
-import time
-from MCP23017 import Adafruit_MCP230XX
-
-mcp = Adafruit_MCP230XX(0x20, 16)
-
-mcp.config(0, mcp.OUTPUT)
-mcp.config(1, mcp.OUTPUT)
-mcp.config(2, mcp.OUTPUT)
-
-mcp.output(0, mcp.HIGH)
-mcp.output(2, mcp.HIGH)
-
-time.sleep(1)
-
-mcp.output(2, mcp.LOW)
-mcp.output(1, mcp.HIGH)
-time.sleep(0.15)
-''' import smbus
+import smbus
 import time
 
 #bus = smbus.SMBus(0)  # Rev 1 Pi uses 0
@@ -37,4 +20,4 @@ while True:
 
   if MySwitch & 0b10000000 == 0b10000000:
    print "Switch was pressed!"
-   time.sleep(1) '''
+   time.sleep(1)
